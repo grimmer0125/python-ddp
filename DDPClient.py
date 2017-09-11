@@ -9,6 +9,8 @@ from pyee import EventEmitter
 
 DDP_VERSIONS = ["1", "pre2", "pre1"]
 
+print("grimmer in DDPClient!!")
+
 class DDPSocket(WebSocketClient, EventEmitter):
     """DDPSocket"""
     def __init__(self, url, debug=False):
@@ -170,6 +172,7 @@ class DDPClient(EventEmitter):
 
         elif data['msg'] == 'connected':
             self._session = data.get('session')
+            print(data.get('session'))
             if self._is_reconnecting:
                 self.ddpsocket._debug_log("* RECONNECTED")
                 self.emit('reconnected')
